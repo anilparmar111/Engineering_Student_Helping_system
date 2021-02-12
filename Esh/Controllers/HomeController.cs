@@ -1,4 +1,5 @@
 ﻿using Esh.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +21,17 @@ namespace Esh.Controllers
 
         public IActionResult Index()
         {
+            
+            string str= HttpContext.Session.GetString("AspNetCore.Identity.Application");
+            if(str=="")
+            {
+                ViewBag.data = "notset";
+            }
+            else
+            {
+                ViewBag.data = "set6";
+
+            }
             return View();
         }
 
