@@ -1,4 +1,5 @@
 ﻿using Esh.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Esh.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -29,7 +31,7 @@ namespace Esh.Controllers
             }
             else
             {
-                ViewBag.data = "set6";
+                ViewBag.data = str;
 
             }
             return View();
