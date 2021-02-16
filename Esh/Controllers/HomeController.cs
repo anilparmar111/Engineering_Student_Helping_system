@@ -47,5 +47,17 @@ namespace Esh.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult MyProfile()
+        {
+            return View();
+        }
+        public IActionResult Message()
+        {
+            return View();
+        }
+        public IActionResult UserProfile()
+        {
+            return View();
+        }
     }
 }
