@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,50 +22,80 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Esh</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Message">Message</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="MyProfile">My Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-bell">
-                                    <span class="badge badge-info">0</span>
-                                </i>
-                                Notifications
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+        @if (@HttpContextAccessor.HttpContext.Session.GetString("set")!=null && @HttpContextAccessor.HttpContext.Session.GetString("set")[0]=='1')
+        {
+          
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Esh &nbsp;&nbsp; </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Post" asp-action="">Create Post&nbsp;&nbsp; </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="MyNetwork" asp-action="">MyNetwork&nbsp;&nbsp; </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <form class="form-inline" asp-controller="Home" asp-action="Serch">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="@ViewBag.Username" placeholder="Search User" required>
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="UserProfile">Profile Example</a>
-                        </li>
-                    </ul>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Recommended" asp-action="">Recommended Connection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Message" asp-action="">Message</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-bell">
+                                        <span class="badge badge-info">0</span>
+                                    </i>
+                                    Notifications
+                                </a>
+                            </li>
+                            <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Home" asp-action="MyProfile">My Profile</a>
+    </li>-->
+                            <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Home" asp-action="UserProfile">Profile Example</a>
+    </li>-->
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+        }
+        else
+        {
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Esh</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial" />
+                <ul class="navbar-nav flex-grow-1">
+         
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+        }
+
     </header>
 
     <div class="container">

@@ -1,4 +1,6 @@
-﻿using Esh.Models;
+﻿using Esh.Data;
+using Esh.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Esh.Controllers
@@ -14,11 +17,13 @@ namespace Esh.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
+        public HomeController(UserManager<IdentityUser> userManager,ApplicationDbContext dbContext)
         {
-            _logger = logger;
+            _userManager = userManager;
+            _context = dbContext;
         }
 
         public IActionResult Index()
@@ -31,14 +36,41 @@ namespace Esh.Controllers
             }
             else
             {
-                ViewBag.data = str;
-
+                string userId = _userManager.GetUserName(User);
+                ViewBag.data = userId;
+                HttpContext.Session.SetString("email",userId);
+                HttpContext.Session.SetString("set", "1");
+                HttpContext.Session.SetString("name", "ap");
             }
             return View();
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Account()
+        {
+            return View();
+        }
+
+        public IActionResult Update(EshUser eshUser)
+        {
+            string userId = _userManager.GetUserName(User);
+            EshUser eshUser1 = new EshUser();
+            eshUser1 = eshUser;
+            eshUser1.emailid = userId;
+            _context.Add(eshUser1);
+            _context.SaveChanges();
+            return View("index");
+        }
+
+        public IActionResult Serch()
+        {
+            string uname = ViewBag.Username;
+            string userId = _userManager.GetUserName(User);
+            EshUser findresult = _context.Eusers.FirstOrDefault(un => un.name == uname);
             return View();
         }
 

@@ -33,6 +33,8 @@ namespace Esh
             services.AddMemoryCache();
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddControllersWithViews();
+            
             // Add framework services.
             services.AddAuthentication().AddGoogle(options => { IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
             options.ClientId = googleAuthNSection["ClientId"];

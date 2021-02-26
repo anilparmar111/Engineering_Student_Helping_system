@@ -4,6 +4,18 @@
     ViewData["Title"] = "Log out";
 }
 
+<script>
+    window.addEventListener('load', function () {
+        console.log('This function is executed once the page is fully loaded');
+        HttpContext.Current.Session.Abandon();
+        HttpContext.Current.Session.Clear();
+        HttpContext.Current.Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+        HttpContext.Current.Response.Cookies.Add(new HttpCookie("set", "-1"));
+        Session.Abandon()
+    });
+   
+</script>
+
 <header>
     <h1>@ViewData["Title"]</h1>
     <p>You have successfully logged out of the application.</p>

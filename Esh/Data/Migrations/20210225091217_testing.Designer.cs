@@ -4,14 +4,16 @@ using Esh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Esh.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210225091217_testing")]
+    partial class testing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,17 +21,14 @@ namespace Esh.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Esh.Models.EshUser", b =>
+            modelBuilder.Entity("Esh.Models.User", b =>
                 {
-                    b.Property<int>("EshUserUserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Persnal_Site_URL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Schoolname")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("about")
@@ -39,9 +38,6 @@ namespace Esh.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("emailid")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("gender")
                         .HasColumnType("bit");
 
@@ -49,9 +45,9 @@ namespace Esh.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EshUserUserId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Eusers");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -4,14 +4,16 @@ using Esh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Esh.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210225175032_done")]
+    partial class done
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,10 +23,8 @@ namespace Esh.Data.Migrations
 
             modelBuilder.Entity("Esh.Models.EshUser", b =>
                 {
-                    b.Property<int>("EshUserUserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("EshUserUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Persnal_Site_URL")
                         .HasColumnType("nvarchar(max)");
@@ -39,9 +39,6 @@ namespace Esh.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("emailid")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("gender")
                         .HasColumnType("bit");
 
@@ -51,7 +48,7 @@ namespace Esh.Data.Migrations
 
                     b.HasKey("EshUserUserId");
 
-                    b.ToTable("Eusers");
+                    b.ToTable("EshUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
