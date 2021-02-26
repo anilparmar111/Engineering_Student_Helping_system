@@ -64,5 +64,9 @@ namespace Esh.Controllers
         {
             return View();
         }
+        public IActionResult DemoMessage()
+        {
+            return View();
+        }
     }
 }
