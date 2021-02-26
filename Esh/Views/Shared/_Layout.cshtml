@@ -43,11 +43,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <form class="form-inline" asp-controller="Home" asp-action="Serch">
+                                <form class="form-inline" >
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="@ViewBag.Username" placeholder="Search User" required>
+                                        
+                                        <input type="text" class="form-control" id="txtSearch" name="txtSearch" value="@ViewBag.Username" placeholder="Search User" required>
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+                                            <button type="submit" class="btn btn-secondary" value="Search" id="btnSearch"
+                                               onclick="location.href='@Url.Action("Serch", "Home")?uname=' + document.getElementById('txtSearch').value; return false;"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </form>

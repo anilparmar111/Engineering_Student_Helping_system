@@ -1,0 +1,79 @@
+﻿@model Esh.Models.EshUser
+
+@{
+    ViewData["Title"] = "Serch";
+}
+
+<h1>Serch</h1>
+@if (ViewBag.find == "ok")
+{
+    <div>
+
+        <h4>EshUser</h4>
+        <hr />
+        @if(ViewBag.friend=="not")
+        {
+            <a href="Request_Connect?fname=@ViewBag.mail"><button class="btn btn-success">Connect</button></a>
+        }
+        else
+        {
+            <h1>You Both Are Friend</h1>
+        }
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.emailid)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.emailid)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Persnal_Site_URL)
+            </dt>
+            <dd class="col-sm-10">
+                <a href="@Html.DisplayFor(model => model.Persnal_Site_URL)" target="_blank"> @Html.DisplayFor(model => model.Persnal_Site_URL)</a>
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.designation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.designation)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.about)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.about)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.gender)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.gender)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Schoolname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Schoolname)
+            </dd>
+        </dl>
+    </div>
+}
+else
+{
+
+<script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.find Can Not Be Find");
+            };
+</script>
+
+    
+    <h1>@ViewBag.find Soory Serch Something else</h1>
+}

@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace Esh.Models
 {
-    public class Connection_Req
+    public class Friend
     {
         //[Key]
         //[Column(Order = 1)]
-        public string requestuser { get; set; }
-
+        public string uid { get; set; }
         //[Key]
         //[Column(Order = 2)]
-        public string Recivername { get; set; }
-
-        public DateTime time { get; set; }
+        public string fid { get; set; }
     }
 }

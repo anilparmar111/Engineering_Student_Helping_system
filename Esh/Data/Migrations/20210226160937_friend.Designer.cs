@@ -4,14 +4,16 @@ using Esh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Esh.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210226160937_friend")]
+    partial class friend
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,15 +24,13 @@ namespace Esh.Data.Migrations
             modelBuilder.Entity("Esh.Models.Connection_Req", b =>
                 {
                     b.Property<string>("Recivername")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("requestuser")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("time")
                         .HasColumnType("datetime2");
-
-                    b.HasKey("Recivername", "requestuser");
 
                     b.ToTable("Connection_Reqs");
                 });
@@ -73,14 +73,12 @@ namespace Esh.Data.Migrations
             modelBuilder.Entity("Esh.Models.Friend", b =>
                 {
                     b.Property<string>("fid")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("uid")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("fid", "uid");
-
-                    b.ToTable("Friends");
+                    b.ToTable("Friend");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
