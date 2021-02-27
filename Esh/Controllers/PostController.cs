@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esh.Controllers
 {
-    public class Post : Controller
+    public class PostController : Controller
     {
         public IActionResult Index()
         {

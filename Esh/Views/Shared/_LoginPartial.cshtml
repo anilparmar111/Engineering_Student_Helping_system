@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http;
-@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity;
+@using Esh.Data;
 @inject IHttpContextAccessor HttpContextAccessor
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ChatApplicationUser> SignInManager
+@inject UserManager<ChatApplicationUser> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))

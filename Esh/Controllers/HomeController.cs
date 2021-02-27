@@ -18,11 +18,13 @@ namespace Esh.Controllers
     public class HomeController : Controller
     {
         //private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ChatApplicationUser> _userManager;
+        private readonly SignInManager<ChatApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
-        public HomeController(UserManager<IdentityUser> userManager,ApplicationDbContext dbContext)
+        public HomeController(UserManager<ChatApplicationUser> userManager,SignInManager<ChatApplicationUser> signInManager,ApplicationDbContext dbContext)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _context = dbContext;
         }
 
@@ -66,7 +68,7 @@ namespace Esh.Controllers
             return View("index");
         }
 
-        public IActionResult Serch()
+        public IActionResult Search()
         {
             string uname = ViewBag.Username;
             string userId = _userManager.GetUserName(User);
