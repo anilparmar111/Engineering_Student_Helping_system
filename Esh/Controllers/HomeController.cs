@@ -22,7 +22,6 @@ namespace Esh.Controllers
         private readonly SignInManager<ChatApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         string userId="";
-        public HomeController(UserManager<IdentityUser> userManager,ApplicationDbContext dbContext)
         public HomeController(UserManager<ChatApplicationUser> userManager,SignInManager<ChatApplicationUser> signInManager,ApplicationDbContext dbContext)
         {
             _userManager = userManager;
@@ -155,10 +154,9 @@ namespace Esh.Controllers
             return View("index");
         }
 
-        public IActionResult Serch(string uname="")
         public IActionResult Search()
         {
-            //string uname = ViewBag.Username;
+            string uname = ViewBag.Username;
             //string userId = _userManager.GetUserName(User);
             //EshUser eu = _context.Eusers.FirstOrDefault(uname => uname.emailid == userId);
             userId = _userManager.GetUserName(User);

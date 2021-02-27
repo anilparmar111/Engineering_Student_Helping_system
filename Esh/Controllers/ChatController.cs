@@ -79,6 +79,7 @@ namespace ChatApplication.Controllers
             return View(model: homeChatViewModel);
         }
 
+        [Route("Chat/FetchUser")]
         public async Task<IActionResult> FetchUser(string UserId)
         {
             HomeChatViewModel homeChatViewModel = new HomeChatViewModel()

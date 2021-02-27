@@ -41,7 +41,6 @@ namespace Esh.Data
             .HasKey(e => new { e.fid, e.uid });
             
             //modelBuilder.Entity<Friend>().HasNoKey();
-            modelBuilder.Entity<Connection_Req>().HasNoKey();
             // for Message table
             modelBuilder.Entity<Message>()
                 .HasOne(mes => mes.SenderUser)
@@ -70,8 +69,6 @@ namespace Esh.Data
 
 
         
-        public DbSet<EshUser> Eusers { get; set; }
-        public DbSet<Connection_Req> Connection_Reqs { get; set; }
         public DbSet<Message> Messages { get; set; }
         //public DbSet<Education> Educations { get; set; }
         //public EshUserEducation EshUserEducations { get; set; }

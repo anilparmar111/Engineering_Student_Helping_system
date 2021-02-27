@@ -7,16 +7,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -24,16 +18,15 @@ namespace Esh.Controllers
 {
     public class PostController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ChatApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
         string userId = "";
-        public Post(UserManager<IdentityUser> userManager, ApplicationDbContext dbContext, IWebHostEnvironment env)
+        public PostController(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _context = dbContext;
             _env = env;
-
         }
         public IActionResult Index()
         {
