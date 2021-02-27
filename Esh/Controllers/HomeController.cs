@@ -53,7 +53,8 @@ namespace Esh.Controllers
                 EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid == frd.fid);
                 user.Add(eur.emailid);
             }
-            List<Post_Details> psd = new List<Post_Details>();
+            return View();
+            /*List<Post_Details> psd = new List<Post_Details>();
             IEnumerable<UsersPost> pst = _context.UsersPosts.Where(obj => 1==1);
             
 
@@ -65,8 +66,8 @@ namespace Esh.Controllers
                 pd.richtext= System.IO.File.ReadAllText(pn.richtext_file_path);
                 pd.uploadtime = pn.uploadtime;
                 psd.Add(pd);
-            }
-            return View(psd);
+            }*/
+            //return View(psd);
             //EshUser my = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
             //IEnumerable<EshUser> us = _context.Eusers.Where(obj => obj.Schoolname ==my.Schoolname);
             /*if (us != null)

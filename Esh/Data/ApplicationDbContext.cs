@@ -23,8 +23,8 @@ namespace Esh.Data
         public DbSet<EshUser> Eusers { get; set; }
         public DbSet<Connection_Req> Connection_Reqs { get; set; }
         public DbSet<Friend> Friends { get; set; }
-        public DbSet<UsersPost> UsersPosts { get; set; }
-        public DbSet<Workp> Workps { get; set; }
+        //public DbSet<UsersPost> UsersPosts { get; set; }
+        //public DbSet<Workp> Workps { get; set; }
         //public DbSet<Post_Create> Posts { get; set; }
         //public DbSet<MyNetwork> MyProperty { get; set; }
 
