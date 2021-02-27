@@ -32,19 +32,70 @@ namespace Esh.Controllers
         {
             
             string str= HttpContext.Session.GetString("AspNetCore.Identity.Application");
-            if(str=="")
-            {
-                ViewBag.data = "notset";
-            }
-            else
-            {
                 userId = _userManager.GetUserName(User);
                 ViewBag.data = userId;
                 HttpContext.Session.SetString("email",userId);
                 HttpContext.Session.SetString("set", "1");
-                HttpContext.Session.SetString("name", "ap");
+                EshUser esh = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
+                if (esh == null)
+                {
+                    HttpContext.Session.SetString("name", "Please Complate Details");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("name", esh.name);
+                }
+            userId = _userManager.GetUserName(User);
+            IEnumerable<Friend> friends = _context.Friends.Where(ob => ob.fid == userId || ob.uid == userId);
+            HashSet<string> user=new HashSet<string>();
+            foreach (Friend frd in friends)
+            {
+                EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid == frd.fid);
+                user.Add(eur.emailid);
             }
-            return View();
+            List<Post_Details> psd = new List<Post_Details>();
+            IEnumerable<UsersPost> pst = _context.UsersPosts.Where(obj => 1==1);
+            
+
+            foreach(UsersPost pn in pst)
+            {
+                Post_Details pd = new Post_Details();
+                pd.postid = pn.postid;
+                pd.title = pn.title;
+                pd.richtext= System.IO.File.ReadAllText(pn.richtext_file_path);
+                pd.uploadtime = pn.uploadtime;
+                psd.Add(pd);
+            }
+            return View(psd);
+            //EshUser my = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
+            //IEnumerable<EshUser> us = _context.Eusers.Where(obj => obj.Schoolname ==my.Schoolname);
+            /*if (us != null)
+            {
+                foreach (EshUser eu in us)
+                {
+                    user.Add(eu.emailid);
+                }
+            }
+            List<Post_Details> psd=new List<Post_Details>();
+            foreach(string st in user)
+            {
+                IEnumerable<Post_New> pns = _context.Post_News.Where(obj => obj.uid == st);
+                if (pns != null)
+                {
+                    foreach (Post_New pn in pns)
+                    {
+                        Post_Details pd = new Post_Details();
+                        pd.postid = pn.postid;
+                        pd.title = pn.title;
+                        //uid,utime,rechtxt
+                        pd.uid = pn.uid;
+                        pd.uploadtime = pn.uploadtime;
+                        pd.richtext = System.IO.File.ReadAllText(pn.richtext_file_path);
+                        psd.Add(pd);
+                    }
+                }
+            }*/
+            //return View(psd);
         }
 
         public IActionResult Privacy()
@@ -76,7 +127,6 @@ namespace Esh.Controllers
         */
         public IActionResult Account()
         {
-
             return View();
         }
 
