@@ -1,1 +1,26 @@
-﻿
+﻿@model IEnumerable<Esh.Models.PostDataView>;
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model != null)
+{
+
+    @foreach (var obj in Model)
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                @obj.title
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Html.Raw(obj.richtext)</p>
+                
+            </div>
+            <div class="card-footer text-muted">
+                @obj.uploadtime
+            </div>
+        </div>
+    }
+}

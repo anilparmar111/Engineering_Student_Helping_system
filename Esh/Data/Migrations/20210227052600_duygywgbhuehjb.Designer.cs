@@ -4,14 +4,16 @@ using Esh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Esh.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210227052600_duygywgbhuehjb")]
+    partial class duygywgbhuehjb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,30 +83,6 @@ namespace Esh.Data.Migrations
                     b.HasKey("fid", "uid");
 
                     b.ToTable("Friends");
-                });
-
-            modelBuilder.Entity("Esh.Models.PostData", b =>
-                {
-                    b.Property<int>("postid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("richtext_file_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("uid")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("uploadtime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("postid");
-
-                    b.ToTable("postDatas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

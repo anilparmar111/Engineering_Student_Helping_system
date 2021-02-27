@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace Esh.Models
 {
-    public class Post_Details
+    public class PostDataView
     {
-        public string uid { get; set; }
         public string title { get; set; }
+        public string uid { get; set; }
         public DateTime uploadtime { get; set; }
         public string richtext { get; set; }
-        public int postid { get; set; }
     }
 }

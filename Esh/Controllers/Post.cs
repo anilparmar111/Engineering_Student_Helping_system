@@ -48,10 +48,13 @@ namespace Esh.Controllers
             filepath = Path.Combine(_env.WebRootPath, folderPath);
             filepath += ".txt";
             System.IO.File.WriteAllText(filepath,cp.textfile);
-            //UsersPost up = new UsersPost();
-            //up.richtext_file_path = filepath;
-            //up.uploadtime = DateTime.Now;
-            //up.uid = _userManager.GetUserName(User);
+            PostData up = new PostData();
+            up.richtext_file_path = filepath;
+            up.uploadtime = DateTime.Now;
+            up.uid = _userManager.GetUserName(User);
+            up.title = cp.title;
+            _context.Add(up);
+            _context.SaveChanges();
             return Redirect("~/Home");
         }
 

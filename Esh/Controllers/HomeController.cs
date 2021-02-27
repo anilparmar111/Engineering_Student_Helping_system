@@ -53,7 +53,17 @@ namespace Esh.Controllers
                 EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid == frd.fid);
                 user.Add(eur.emailid);
             }
-            return View();
+            List<PostDataView> pv=new List<PostDataView>();
+            foreach(PostData pd in _context.postDatas)
+            {
+                PostDataView tmp = new PostDataView();
+                tmp.uid = userId;
+                tmp.title = pd.title;
+                tmp.uploadtime = pd.uploadtime;
+                tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                pv.Add(tmp);
+            }
+            return View(pv);
             /*List<Post_Details> psd = new List<Post_Details>();
             IEnumerable<UsersPost> pst = _context.UsersPosts.Where(obj => 1==1);
             

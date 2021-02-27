@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Esh.Models
 {
-    public class Post_New
+    public class PostData
     {
         [Key]
         public int postid { get; set; }
-        public string uid;
-        public DateTime uploadtime;
-        public string richtext_file_path;
+        public string richtext_file_path { get; set; }
+        public DateTime uploadtime { get; set; }
         public string title { get; set; }
+        public string uid { get; set; }
+        
+        
     }
 }
