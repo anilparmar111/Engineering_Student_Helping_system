@@ -1,14 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Esh.Models.Create_Post
+﻿@model Esh.Models.Create_Post
 
 @{
     ViewData["Title"] = "Create_Post";
@@ -28,7 +18,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form method="post" enctype="multipart/form-data" asp-action="Query_Problem">
+        <form method="post" enctype="multipart/form-data" asp-action="Post_Created">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="title" class="control-label"></label>
@@ -43,15 +33,7 @@
                 <span asp-validation-for="textfile" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="photos" class="control-label"></label>
-                <div class="custom-file">
-                    <input asp-for="photos" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                </div>
-                <span asp-validation-for="photos" class="text-danger"></span>
-            </div>
-
+          
             <script>
                 $(document).ready(function () {
                     $('.custom-file-input').on("change", function () {
@@ -77,11 +59,6 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
