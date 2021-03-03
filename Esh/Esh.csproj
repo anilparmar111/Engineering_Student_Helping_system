@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Media\**" />
+    <Content Remove="Media\**" />
+    <EmbeddedResource Remove="Media\**" />
+    <None Remove="Media\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Data\Migrations\20210226073912_fd2.cs" />
     <Compile Remove="Data\Migrations\20210226073912_fd2.Designer.cs" />
   </ItemGroup>
@@ -26,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Media\" />
     <Folder Include="wwwroot\Media\" />
   </ItemGroup>
 

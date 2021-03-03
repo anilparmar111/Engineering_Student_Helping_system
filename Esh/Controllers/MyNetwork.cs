@@ -11,10 +11,10 @@ namespace Esh.Controllers
 {
     public class MyNetwork : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ChatApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         string userId = "";
-        public MyNetwork(UserManager<IdentityUser> userManager, ApplicationDbContext dbContext)
+        public MyNetwork(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _context = dbContext;

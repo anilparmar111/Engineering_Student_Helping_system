@@ -7,7 +7,7 @@ namespace Esh.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            /*migrationBuilder.AlterColumn<string>(
                 name: "requestuser",
                 table: "Connection_Reqs",
                 nullable: false,
@@ -54,7 +54,7 @@ namespace Esh.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_postDatas", x => x.postid);
-                });
+                });*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

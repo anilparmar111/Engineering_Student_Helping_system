@@ -154,9 +154,9 @@ namespace Esh.Controllers
             return View("index");
         }
 
-        public IActionResult Search()
+        public IActionResult Serch(string uname="")
         {
-            string uname = ViewBag.Username;
+            //string uname = ViewBag.Username;
             //string userId = _userManager.GetUserName(User);
             //EshUser eu = _context.Eusers.FirstOrDefault(uname => uname.emailid == userId);
             userId = _userManager.GetUserName(User);
