@@ -56,6 +56,7 @@ namespace Esh.Controllers
                 user.Add(eur.emailid);
             }
             List<PostDataView> pv=new List<PostDataView>();
+            //algo remaing and logic
             foreach(PostData pd in _context.postDatas)
             {
                 PostDataView tmp = new PostDataView();
@@ -63,6 +64,7 @@ namespace Esh.Controllers
                 tmp.title = pd.title;
                 tmp.uploadtime = pd.uploadtime;
                 tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                
                 pv.Add(tmp);
             }
             return View(pv);
