@@ -23,8 +23,6 @@ namespace ChatApplication.Controllers
 
         public HomeController(UserManager<ChatApplicationUser> userManager,
                              SignInManager<ChatApplicationUser> signInManager,
-                             ApplicationDbContext chatApplicationDBContext,
-                             ILogger<HomeController> logger)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;

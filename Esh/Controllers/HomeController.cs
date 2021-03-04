@@ -17,12 +17,11 @@ namespace Esh.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<ChatApplicationUser> _userManager;
-        private readonly SignInManager<ChatApplicationUser> _signInManager;
+        //private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ApplicationDbContext _context;
         string userId="";
-        public HomeController(UserManager<ChatApplicationUser> userManager,SignInManager<ChatApplicationUser> signInManager,ApplicationDbContext dbContext, ILogger<HomeController> logger)
+        public HomeController(UserManager<IdentityUser> userManager,ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;

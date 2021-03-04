@@ -24,7 +24,6 @@ namespace Esh.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
         string userId = "";
-        public PostController(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext, IWebHostEnvironment env, ILogger<HomeController> logger)
         {
             _userManager = userManager;
             _context = dbContext;
