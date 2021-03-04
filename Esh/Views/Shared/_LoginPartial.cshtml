@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http;
-@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity;
+@using Esh.Data;
 @inject IHttpContextAccessor HttpContextAccessor
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ChatApplicationUser> SignInManager
+@inject UserManager<ChatApplicationUser> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
@@ -10,11 +11,11 @@
         <li class="nav-item">
             @if(@HttpContextAccessor.HttpContext.Session.GetString("name")!=null)
             {
-            <a class="nav-link text-dark" href="/Home/Account"  title="Manage">@HttpContextAccessor.HttpContext.Session.GetString("name")</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-controller="Home" asp-action="Account"  title="Manage">@HttpContextAccessor.HttpContext.Session.GetString("name")</a>
             }
             else
             {
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="Home/Account" title="Manage">@User.Identity.Name</a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-controller="Home" asp-action="Account" title="Manage">@User.Identity.Name</a>
             }
         </li>
         <li class="nav-item">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ namespace Esh.Controllers
 {
     public static class ClaimsPrincipalExtensions
     {
+       
         public static T GetLoggedInUserId<T>(this ClaimsPrincipal principal)
         {
             if (principal == null)

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Esh.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ChatApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -41,6 +41,16 @@ namespace Esh.Data
             .HasKey(e => new { e.fid, e.uid });
             
             //modelBuilder.Entity<Friend>().HasNoKey();
+            // for Message table
+            modelBuilder.Entity<Message>()
+                .HasOne(mes => mes.SenderUser)
+                .WithMany(u => u.MessagesSent)
+                .HasForeignKey(mes => mes.SenderUserID);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(mes => mes.ReceiverUser)
+                .WithMany(u => u.MessagesReceived)
+                .HasForeignKey(mes => mes.ReceiverUserID);
             //modelBuilder.Entity<EshUserEducation>().HasKey( sc => new { sc.EducationId,sc.EshUserId});
             //base.OnModelCreating(modelBuilder);
             //oneToManyRelationshipConfiguration(modelBuilder);
@@ -59,6 +69,7 @@ namespace Esh.Data
 
 
         
+        public DbSet<Message> Messages { get; set; }
         //public DbSet<Education> Educations { get; set; }
         //public EshUserEducation EshUserEducations { get; set; }
         //public DbSet<EshUsersEducation> EshUsersEducation { get; set; }

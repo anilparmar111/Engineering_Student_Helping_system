@@ -17,15 +17,17 @@ namespace Esh.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<ChatApplicationUser> _userManager;
+        private readonly SignInManager<ChatApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         string userId="";
-        public HomeController(UserManager<IdentityUser> userManager,ApplicationDbContext dbContext)
+        public HomeController(UserManager<ChatApplicationUser> userManager,SignInManager<ChatApplicationUser> signInManager,ApplicationDbContext dbContext, ILogger<HomeController> logger)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _context = dbContext;
-            
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -54,6 +56,7 @@ namespace Esh.Controllers
                 user.Add(eur.emailid);
             }
             List<PostDataView> pv=new List<PostDataView>();
+            //algo remaing and logic
             foreach(PostData pd in _context.postDatas)
             {
                 PostDataView tmp = new PostDataView();
@@ -61,8 +64,10 @@ namespace Esh.Controllers
                 tmp.title = pd.title;
                 tmp.uploadtime = pd.uploadtime;
                 tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                
                 pv.Add(tmp);
             }
+            _logger.LogInformation("Index Page Of Home Has Been Accessed");
             return View(pv);
             /*List<Post_Details> psd = new List<Post_Details>();
             IEnumerable<UsersPost> pst = _context.UsersPosts.Where(obj => 1==1);
@@ -111,6 +116,7 @@ namespace Esh.Controllers
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("Privacy Page Of Home Has Been Accessed");
             return View();
         }
 
@@ -138,6 +144,7 @@ namespace Esh.Controllers
         */
         public IActionResult Account()
         {
+            _logger.LogInformation("Account Page Of Home Has Been Accessed");
             return View();
         }
 
@@ -149,11 +156,13 @@ namespace Esh.Controllers
             eshUser1.emailid = userId;
             _context.Add(eshUser1);
             _context.SaveChanges();
+            _logger.LogInformation("Update Page Of Home Has Been Accessed");
             return View("index");
         }
 
         public IActionResult Serch(string uname="")
         {
+            _logger.LogInformation("Search Page Of Home Has Been Accessed");
             //string uname = ViewBag.Username;
             //string userId = _userManager.GetUserName(User);
             //EshUser eu = _context.Eusers.FirstOrDefault(uname => uname.emailid == userId);
