@@ -14,7 +14,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
-using Esh.Hubs;
+using Microsoft.AspNetCore.Mvc;
+using ChatApplication.Models;
+using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Esh
 {
@@ -36,12 +39,13 @@ namespace Esh
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
-            
+
             // Add framework services.
-            services.AddAuthentication().AddGoogle(options => { IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
-            options.ClientId = googleAuthNSection["ClientId"];
-            options.ClientSecret = googleAuthNSection["ClientSecret"];
-        });
+            services.AddAuthentication().AddGoogle(options => {
+                IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+                options.ClientId = googleAuthNSection["ClientId"];
+                options.ClientSecret = googleAuthNSection["ClientSecret"];
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -60,7 +64,8 @@ namespace Esh
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        [Obsolete]
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             var path = Directory.GetCurrentDirectory();
             loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
