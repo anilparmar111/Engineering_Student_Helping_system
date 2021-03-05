@@ -13,23 +13,27 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.Text;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace Esh.Controllers
 {
     public class PostController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly UserManager<ChatApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
         string userId = "";
-        public PostController(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext, IWebHostEnvironment env)
+        public PostController(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext, IWebHostEnvironment env, ILogger<HomeController> logger)
         {
             _userManager = userManager;
             _context = dbContext;
             _env = env;
+            _logger = logger;
         }
         public IActionResult Index()
         {
+            _logger.LogInformation("Index Page Of Post Has Been Accessed");
             return View();
         }
 
@@ -48,6 +52,7 @@ namespace Esh.Controllers
             up.title = cp.title;
             _context.Add(up);
             _context.SaveChanges();
+            _logger.LogInformation("Post_Created Of Post Has Been Accessed");
             return Redirect("~/Home");
         }
 

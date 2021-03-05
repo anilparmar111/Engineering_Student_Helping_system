@@ -1,0 +1,67 @@
+<div data-hveid="1">
+<div>
+<div>
+<div id="gb"></div>
+</div>
+</div>
+</div>
+<div>
+<div><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" srcset="/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png 1x, /images/branding/googlelogo/2x/googlelogo_color_272x92dp.png 2x" alt="Google" width="272" height="92" data-atf="1" /></div>
+</div>
+<div><form role="search" action="/search" method="GET">
+<div id="tophf"></div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form></div>
+<div>
+<div>
+<div>
+<div>&nbsp;</div>
+<input title="Search" role="combobox" spellcheck="false" autocomplete="off" maxlength="2048" name="q" type="text" value="" autofocus="" data-ved="0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ39UDCAQ" aria-label="Search" aria-haspopup="false" aria-autocomplete="both" /></div>
+<div>&nbsp;</div>
+</div>
+</div>
+<div>&nbsp;</div>
+<div><form role="search" action="/search" method="GET">
+<div>
+<div>&nbsp;</div>
+</div>
+</form></div>
+<div>
+<div id="gws-output-pages-elements-homepage_additional_languages__als">
+<div id="SIvCob">Google offered in: <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCA0">हिन्दी</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=bn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCA4">বাংলা</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=te&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCA8">తెలుగు</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=mr&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBA">मराठी</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=ta&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBE">தமிழ்</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=gu&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBI">ગુજરાતી</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=kn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBM">ಕನ್ನಡ</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=ml&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBQ">മലയാളം</a> <a href="https://www.google.com/setprefs?sig=0_97D4MfQCth5XwNutXW9PlUzNqBs%3D&amp;hl=pa&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwisuLqrzonvAhVGdCsKHZEcANgQ2ZgBCBU">ਪੰਜਾਬੀ</a></div>
+</div>
+</div>
+<div>
+<div>India</div>
+<div data-sfsw="1200" data-sfe="false">
+<div><a href="https://about.google/?utm_source=google-IN&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1">About</a><a href="https://www.google.com/intl/en_in/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpafooter&amp;fg=1">Advertising</a><a href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpbfooter&amp;fg=1">Business</a><a href="https://google.com/search/howsearchworks/?fg=1"> How Search works </a></div>
+<div><a href="https://policies.google.com/privacy?hl=en-IN&amp;fg=1">Privacy</a><a href="https://policies.google.com/terms?hl=en-IN&amp;fg=1">Terms</a>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<div data-hveid="1">
+<div>
+<div data-sfsw="1200" data-sfe="false">
+<div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div id="lb"></div>
+<div>
+<div>&nbsp;</div>
+</div>
+</div>

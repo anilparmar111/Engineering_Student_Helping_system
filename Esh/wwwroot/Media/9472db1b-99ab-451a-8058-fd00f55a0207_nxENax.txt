@@ -1,0 +1,12 @@
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 48.6606%;">c1</td>
+<td style="width: 48.7339%;">C2</td>
+</tr>
+<tr>
+<td style="width: 48.6606%;">c3</td>
+<td style="width: 48.7339%;">c4</td>
+</tr>
+</tbody>
+</table>

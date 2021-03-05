@@ -1,0 +1,39 @@
+<div>
+<div><img style="width: auto;" src="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" srcset="/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png 1x, /images/branding/googlelogo/2x/googlelogo_color_272x92dp.png 2x" alt="Google" width="272" height="92" data-atf="1" data-iml="1614408701856" /></div>
+</div>
+<div><form role="search" action="https://www.google.co.in/search" method="GET">
+<div id="tophf"></div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div>
+<div>&nbsp;</div>
+<input title="Search" role="combobox" spellcheck="false" autocomplete="off" maxlength="2048" name="q" type="text" value="" autofocus="" data-ved="0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ39UDCAQ" aria-label="Search" aria-haspopup="false" aria-autocomplete="both" /></div>
+<div>
+<div tabindex="0" role="button" data-ved="0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQvs8DCAY" aria-label="Search by voice">&nbsp;</div>
+</div>
+</div>
+</div>
+<div><center><input name="btnK" type="submit" value="Google Search" data-ved="0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ4dUDCAs" aria-label="Google Search" />&nbsp;<input name="btnI" type="submit" value="I'm Feeling Lucky" data-ved="0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ19QECAw" aria-label="I'm Feeling Lucky" /></center></div>
+</div>
+<div>&nbsp;</div>
+</div>
+</form></div>
+<div>
+<div id="gws-output-pages-elements-homepage_additional_languages__als">
+<div id="SIvCob">Google offered in:&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=hi&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCA4">हिन्दी</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=bn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCA8">বাংলা</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=te&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBA">తెలుగు</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=mr&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBE">मराठी</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=ta&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBI">தமிழ்</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=gu&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBM">ગુજરાતી</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=kn&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBQ">ಕನ್ನಡ</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=ml&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBU">മലയാളം</a>&nbsp;<a href="https://www.google.co.in/setprefs?sig=0_Y1S3Hh0PG6Dy5hrMRDwXsUM-x0c%3D&amp;hl=pa&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjssZGJvYnvAhWSjeYKHYuIB6EQ2ZgBCBY">ਪੰਜਾਬੀ</a></div>
+</div>
+</div>
+<div>
+<div>India</div>
+<div data-sfsw="1200" data-sfe="false">
+<div><a href="https://about.google/?utm_source=google-IN&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1">About</a><a href="https://www.google.co.in/intl/en_in/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpafooter&amp;fg=1">Advertising</a><a href="https://www.google.co.in/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpbfooter&amp;fg=1">Business</a><a href="https://google.com/search/howsearchworks/?fg=1">How Search works</a></div>
+<div><a href="https://policies.google.com/privacy?hl=en-IN&amp;fg=1">Privacy</a><a href="https://policies.google.com/terms?hl=en-IN&amp;fg=1">Terms</a>
+<div><button id="Mses6b" aria-haspopup="true" aria-controls="dEjpnf">Settings</button></div>
+</div>
+</div>
+</div>

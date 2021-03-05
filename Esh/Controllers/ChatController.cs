@@ -9,28 +9,34 @@ using Microsoft.AspNetCore.Identity;
 using Esh.Data;
 using Esh.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace ChatApplication.Controllers
 {
+    
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly UserManager<ChatApplicationUser> userManager;
         private readonly SignInManager<ChatApplicationUser> signInManager;
         private readonly ApplicationDbContext chatApplicationDBContext;
 
         public HomeController(UserManager<ChatApplicationUser> userManager,
                              SignInManager<ChatApplicationUser> signInManager,
-                             ApplicationDbContext chatApplicationDBContext)
+                             ApplicationDbContext chatApplicationDBContext,
+                             ILogger<HomeController> logger)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.chatApplicationDBContext = chatApplicationDBContext;
+            _logger = logger;
         }
 
         [Route("Chat/ChatHome")]
         [Authorize]
         public async Task<IActionResult> ChatHome()
         {
+            _logger.LogInformation("ChatHome Page Of Chat Has Been Accessed");
             HomeChatViewModel homeChatViewModel = new HomeChatViewModel()
             {
                 Users = (IList<ChatApplicationUser>)chatApplicationDBContext.Users.ToList(),
@@ -82,6 +88,7 @@ namespace ChatApplication.Controllers
         [Route("Chat/FetchUser")]
         public async Task<IActionResult> FetchUser(string UserId)
         {
+            _logger.LogInformation("FetchUser Page Of Chat Has Been Accessed");
             HomeChatViewModel homeChatViewModel = new HomeChatViewModel()
             {
                 Users = (IList<ChatApplicationUser>)chatApplicationDBContext.Users.ToList(),

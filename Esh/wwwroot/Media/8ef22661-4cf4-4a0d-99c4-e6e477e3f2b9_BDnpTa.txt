@@ -1,0 +1,1 @@
+<p>List pv=new List(); foreach(PostData pd in _context.postDatas) { PostDataView tmp = new PostDataView(); tmp.uid = userId; tmp.title = pd.title; tmp.uploadtime = pd.uploadtime; tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path); pv.Add(tmp); } return View(pv);</p>

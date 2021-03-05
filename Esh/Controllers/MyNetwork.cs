@@ -2,6 +2,7 @@
 using Esh.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,18 @@ namespace Esh.Controllers
 {
     public class MyNetwork : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly UserManager<ChatApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         string userId = "";
-        public MyNetwork(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext)
+        public MyNetwork(UserManager<ChatApplicationUser> userManager, ApplicationDbContext dbContext, ILogger<HomeController> logger)
         {
             _userManager = userManager;
             _context = dbContext;
+            _logger = logger;
 
         }
+
 
         public IActionResult Index()
         {
@@ -47,6 +51,7 @@ namespace Esh.Controllers
             MNetwork mn = new MNetwork();
             mn.friends = eshUsers;
             mn.requsers = ruser;
+            _logger.LogInformation("Index Page Of MyNetwork Has Been Accessed");
             return View(mn);
         }
         public IActionResult Accept(string fname)
@@ -58,6 +63,7 @@ namespace Esh.Controllers
             _context.Remove(cnr);
             _context.Add(frd);
             _context.SaveChanges();
+            _logger.LogInformation("Accept Page Of MyNetwork Has Been Accessed");
             return Redirect("~/Home");
         }
         public IActionResult Reject(string fname)
@@ -65,6 +71,7 @@ namespace Esh.Controllers
             Connection_Req cnr = _context.Connection_Reqs.FirstOrDefault(obj => obj.Recivername == _userManager.GetUserName(User));
             _context.Remove(cnr);
             _context.SaveChanges();
+            _logger.LogInformation("Reject Page Of MyNetwork Has Been Accessed");
             return Redirect("~/Home");
         }
     }
