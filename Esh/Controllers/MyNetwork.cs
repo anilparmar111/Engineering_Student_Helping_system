@@ -60,7 +60,8 @@ namespace Esh.Controllers
             frd.fid = fname;
             frd.uid=_userManager.GetUserName(User);
             Connection_Req cnr = _context.Connection_Reqs.FirstOrDefault(obj => obj.Recivername== _userManager.GetUserName(User));
-            _context.Remove(cnr);
+            //_context.Remove(cnr);
+            _context.SaveChanges();
             _context.Add(frd);
             _context.SaveChanges();
             _logger.LogInformation("Accept Page Of MyNetwork Has Been Accessed");
