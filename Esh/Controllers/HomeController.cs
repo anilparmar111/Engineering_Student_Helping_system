@@ -52,7 +52,15 @@ namespace Esh.Controllers
             HashSet<string> st=new HashSet<string>();
             foreach(Friend frd in friends)
             {
-                st.Add(frd.uid);
+                //st.Add(frd.uid);
+                if(frd.uid==userId)
+                {
+                    st.Add(frd.fid);
+                }
+                else
+                {
+                    st.Add(frd.uid);
+                }
             }
             HashSet<string> user=new HashSet<string>();
             foreach (Friend frd in friends)
