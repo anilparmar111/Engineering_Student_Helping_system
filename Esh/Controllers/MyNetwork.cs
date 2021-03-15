@@ -58,10 +58,14 @@ namespace Esh.Controllers
         {
             Friend frd = new Friend();
             frd.fid = fname;
-            frd.uid=_userManager.GetUserName(User);
+            frd.uid= _userManager.GetUserName(User);
+            Friend frd2 = new Friend();
+            frd2.uid = fname;
+            frd2.fid = frd.uid;
             Connection_Req cnr = _context.Connection_Reqs.FirstOrDefault(obj => obj.Recivername== _userManager.GetUserName(User));
             _context.Remove(cnr);
             _context.Add(frd);
+            _context.Add(frd2);
             _context.SaveChanges();
             _logger.LogInformation("Accept Page Of MyNetwork Has Been Accessed");
             return Redirect("~/Home");

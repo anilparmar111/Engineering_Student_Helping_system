@@ -44,14 +44,40 @@ namespace ChatApplication.Controllers
                 ReceiverUser = null,
                 LastMessageBetweenTwoUser = new Dictionary<string, Message>()
             };
-
+            
             var loggedInUser = await userManager.GetUserAsync(User);
+            List<Friend> friends = chatApplicationDBContext.Friends.Where(f => f.uid == loggedInUser.UserName).ToList<Friend>();
+            //_logger.LogInformation($"{friends.Count}");
+            if (friends.Count == 0)
+            {
+                homeChatViewModel.Users.Clear();
+            }
 
+            //ChatApplicationUser cau = null;
+            List<ChatApplicationUser> lt = new List<ChatApplicationUser>();
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
-                if (homeChatViewModel.Users[i] == loggedInUser)
-                    homeChatViewModel.Users.Remove(homeChatViewModel.Users[i]);
+                //_logger.LogInformation(homeChatViewModel.Users[i].UserName);
+                //if (homeChatViewModel.Users[i] == loggedInUser)
+                    //cau = homeChatViewModel.Users[i];
+                foreach (Friend f in friends)
+                {
+                    //_logger.LogInformation(f.fid);
+                    if (f.fid == homeChatViewModel.Users[i].UserName)
+                    {
+                        lt.Add(homeChatViewModel.Users[i]);
+                    }
+                }
             }
+            
+            /*foreach(ChatApplicationUser c in lt)
+            {
+                homeChatViewModel.Users.Remove(c);
+            }*/
+
+            homeChatViewModel.Users = lt;
+
+            //homeChatViewModel.Users.Remove(cau);
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
                 if (homeChatViewModel.Users[i] != loggedInUser)
@@ -89,6 +115,8 @@ namespace ChatApplication.Controllers
         public async Task<IActionResult> FetchUser(string UserId)
         {
             _logger.LogInformation("FetchUser Page Of Chat Has Been Accessed");
+            var loggedInUser = await userManager.GetUserAsync(User);
+            ViewBag.loginUser = loggedInUser.Id;
             HomeChatViewModel homeChatViewModel = new HomeChatViewModel()
             {
                 Users = (IList<ChatApplicationUser>)chatApplicationDBContext.Users.ToList(),
@@ -96,10 +124,6 @@ namespace ChatApplication.Controllers
                 ReceiverUser = null,
                 LastMessageBetweenTwoUser = new Dictionary<string, Message>()
             };
-            var loggedInUser = await userManager.GetUserAsync(User);
-            ViewBag.loginUser = loggedInUser.Id;
-
-
 
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
