@@ -1,0 +1,14 @@
+<p><br /><br /><br /></p>
+<div id="content">
+<div align="center"><form id="login-form" action="https://egov.ddit.ac.in/index.php?r=site/login" method="post"><label for="LoginForm_username">Username&nbsp;*</label><input id="LoginForm_username" name="LoginForm[username]" type="text" placeholder="Username" />
+<div id="LoginForm_username_em_">Username cannot be blank.</div>
+<label for="LoginForm_password">Password&nbsp;*</label><input id="LoginForm_password" name="LoginForm[password]" type="password" placeholder="Password" /><br />
+<div>Note : All students are informed that, Username for this site is his/her ID No.,<br />And Password is his/her ID NO. or Birthdate (dd/mm/yyyy).</div>
+<div><label for="LoginForm_verifyCode">Verify Code&nbsp;*</label>
+<div><img id="yw0" style="height: auto;" src="https://egov.ddit.ac.in/index.php?r=site/captcha&amp;v=6048f4611e7bd" alt="" /><a id="yw0_button" href="https://egov.ddit.ac.in/index.php?r=site/captcha&amp;refresh=1">Get a new code</a><br /><input id="LoginForm_verifyCode" name="LoginForm[verifyCode]" type="text" /></div>
+<div>Please enter the letters as they are shown in the image above.<br />Letters are not case-sensitive.</div>
+</div>
+<button id="yw1" name="yt0" type="submit">Log in</button></form></div>
+</div>
+<div>&nbsp;</div>
+<div id="footer">Copyright &copy; 2021 by D. D. University, Nadiad.<br />All Rights Reserved. Powered by&nbsp;<a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>.<br />No of Online Users : 18</div>
