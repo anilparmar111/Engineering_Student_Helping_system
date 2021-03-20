@@ -54,15 +54,17 @@ namespace Esh.Controllers
             _logger.LogInformation("Index Page Of MyNetwork Has Been Accessed");
             return View(mn);
         }
-        public IActionResult Accept(string fname)
+        
+        public async Task<IActionResult> Accept(string fname)
         {
             Friend frd = new Friend();
             frd.fid = fname;
             frd.uid=_userManager.GetUserName(User);
             Connection_Req cnr = _context.Connection_Reqs.FirstOrDefault(obj => obj.Recivername== _userManager.GetUserName(User));
             _context.Remove(cnr);
+            await  _context.SaveChangesAsync();
             _context.Add(frd);
-            _context.SaveChanges();
+            await  _context.SaveChangesAsync();
             _logger.LogInformation("Accept Page Of MyNetwork Has Been Accessed");
             return Redirect("~/Home");
         }
@@ -72,6 +74,25 @@ namespace Esh.Controllers
             _context.Remove(cnr);
             _context.SaveChanges();
             _logger.LogInformation("Reject Page Of MyNetwork Has Been Accessed");
+            return Redirect("~/Home");
+        }
+
+        public IActionResult Unfollow(string fname)
+        {
+            //Friend frd=_context.Friends.Where
+            //Friend frd = _context.Friends.Where(obj => obj.uid == "as");
+            string uid = _userManager.GetUserName(User);
+            Friend cnr = _context.Friends.FirstOrDefault(obj => (obj.uid==uid && obj.fid==fname) ||(obj.uid==fname && obj.fid==uid));
+            if (cnr != null)
+            {
+                _context.Remove(cnr);
+                _context.SaveChanges();
+                _logger.LogInformation(fname + " remove from " + _userManager.GetUserName(User) + "'s Friend");
+            }
+            else
+            {
+                _logger.LogInformation("some error ocures while deleting friend");
+            }
             return Redirect("~/Home");
         }
     }

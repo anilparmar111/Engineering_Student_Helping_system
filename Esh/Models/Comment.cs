@@ -8,6 +8,7 @@ namespace Esh.Models
     public class Comment
     {
         public string postid;
+        public string uid { get; set; }
         public DateTime Cooment_time;
         public string coomenttext;
     }

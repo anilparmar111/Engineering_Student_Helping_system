@@ -1,0 +1,68 @@
+﻿@model Esh.Models.PostDataView
+
+@{
+    ViewData["Title"] = "Edit_Post";
+}
+
+@if (ViewBag.error == "yes")
+{
+    <h1>You Are Not Allowed To Edit The Post</h1>
+}
+else
+{
+
+    <script src="https://cdn.tiny.cloud/1/x4qh25xwzcoc5bs4k4ciqwy4umd530rd9ltwg6s2acjv1bio/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+        });
+    </script>
+
+
+
+    <h1>Edit_Post</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit_Post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="title" class="control-label"></label>
+                    <input asp-for="title" class="form-control" />
+                    <span asp-validation-for="title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="richtext" class="control-label">Edit The Post</label>
+                    <textarea style="overflow:scroll;" rows="25" cols="100" asp-for="richtext"></textarea>
+                    <span asp-validation-for="richtext" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" asp-controller="Home" asp-action="Edit_Post_Save" asp-route-id=@Model.Postid value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+}
