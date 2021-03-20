@@ -22,66 +22,64 @@
 </head>
 <body>
     <header>
-        <!--if (HttpContextAccessor.HttpContext.Session.GetString("set") != null && HttpContextAccessor.HttpContext.Session.GetString("set")[0] == '1')
-     {-->
+        @if (@HttpContextAccessor.HttpContext.Session.GetString("set")!=null && @HttpContextAccessor.HttpContext.Session.GetString("set")[0]=='1')
+        {
+          
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Esh &nbsp;&nbsp; </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Post" asp-action="Index">Create Post&nbsp;&nbsp; </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="MyNetwork" asp-action="">MyNetwork&nbsp;&nbsp; </a>
+                            </li>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Esh &nbsp;&nbsp; </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Post" asp-action="Index">Create Post&nbsp;&nbsp; </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="MyNetwork" asp-action="">MyNetwork&nbsp;&nbsp; </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <form class="form-inline" asp-controller="Home" asp-action="Serch">
-                                <div class="input-group">
-
-                                    <input type="text" class="form-control" id="txtSearch" name="txtSearch" value="@ViewBag.Username" placeholder="Search User" required>
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-secondary" value="Search" id="btnSearch"
-                                                onclick="location.href='@Url.Action("Serch", "Home" )?uname=' + document.getElementById('txtSearch').value; return false;">
-                                            <i class="fa fa-search"></i>
-                                        </button>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-controller="Home" asp-action="Search">
+                                    <div class="input-group">
+                                        
+                                        <input type="text" class="form-control" id="txtSearch" name="txtSearch" value="@ViewBag.Username" placeholder="Search User" required>
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-secondary" value="Search" id="btnSearch"
+                                               onclick="location.href='@Url.Action("Serch", "Home")?uname=' + document.getElementById('txtSearch').value; return false;"><i class="fa fa-search"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Recommended" asp-action="">Recommended Connection</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="ChatHome">Message</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-bell">
-                                    <span class="badge badge-info">0</span>
-                                </i>
-                                Notifications
-                            </a>
-                        </li>
-                        <!--<li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="MyProfile">My Profile</a>
-                    </li>-->
-                        <!--<li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="UserProfile">Profile Example</a>
-                    </li>-->
-                    </ul>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Recommended" asp-action="">Recommended Connection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Chat" asp-action="ChatHome">Message</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-bell">
+                                        <span class="badge badge-info">0</span>
+                                    </i>
+                                    Notifications
+                                </a>
+                            </li>
+                            <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Home" asp-action="MyProfile">My Profile</a>
+    </li>-->
+                            <!--<li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Home" asp-action="UserProfile">Profile Example</a>
+    </li>-->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <!--}-->
-        <!--else
+            </nav>
+        }
+        else
         {
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
@@ -93,12 +91,12 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <partial name="_LoginPartial" />
                 <ul class="navbar-nav flex-grow-1">
-
+         
                 </ul>
             </div>
         </div>
     </nav>
-        }-->
+        }
 
     </header>
 

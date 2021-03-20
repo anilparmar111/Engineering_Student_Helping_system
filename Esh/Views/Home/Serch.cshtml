@@ -17,7 +17,7 @@
         }
         else
         {
-            <h1>@ViewBag.friend</h1>
+            <h1>You Both Are Friend</h1>
         }
         <dl class="row">
             <dt class="col-sm-2">
@@ -54,14 +54,7 @@
                 @Html.DisplayNameFor(model => model.gender)
             </dt>
             <dd class="col-sm-10">
-                @if (Model.gender)
-                {
-                <p>male</p>
-                }
-                else
-                {
-                    <p>female</p>
-                }
+                @Html.DisplayFor(model => model.gender)
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Schoolname)
