@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Esh.ViewModel;
 
 namespace Esh.Controllers
 {
@@ -30,10 +31,12 @@ namespace Esh.Controllers
             _logger = logger;
         }
 
+        
+
         public IActionResult Index()
         {
             
-            string str= HttpContext.Session.GetString("AspNetCore.Identity.Application");
+                string str= HttpContext.Session.GetString("AspNetCore.Identity.Application");
                 userId = _userManager.GetUserName(User);
                 ViewBag.data = userId;
                 HttpContext.Session.SetString("email",userId);
@@ -104,33 +107,116 @@ namespace Esh.Controllers
             return View();
         }
 
-        /*public IActionResult MyNetwork()
+        public IActionResult tempforv()
         {
-            userId = _userManager.GetUserName(User);
-            IEnumerable<Friend> friends = _context.Friends.Where(ob=> ob.fid==userId || ob.uid == userId);
-            IEnumerable<Connection_Req> cr = _context.Connection_Reqs.Where(ob => ob.Recivername==userId);
-            List<ReqUser> ruser=new List<ReqUser>();
-            foreach(Connection_Req conr in cr)
-            {
-                EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid==conr.requestuser);
-                ReqUser tmp = new ReqUser();
-                tmp.name = eur.name;
-                tmp.reqtime = conr.time;
-                tmp.school = eur.Schoolname;
-                tmp.uid = conr.requestuser;
-                ruser.Add(tmp);
-            }
-            MNetwork mn = new MNetwork();
-            mn.friends = friends;
-            mn.requsers = ruser;
-            return View(mn);
-        }
-        */
-        public IActionResult Account()
-        {
-            _logger.LogInformation("Account Page Of Home Has Been Accessed");
             return View();
         }
+
+        public IActionResult Account()
+        {
+            string userId = _userManager.GetUserName(User);
+            EshUser esu = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
+            _logger.LogInformation("Account Page Of Home Has Been Accessed");
+            if (esu==null || esu.name=="")
+            {
+                ViewBag.notfill = "ok";
+                return View();
+            }
+            else
+            {
+               IEnumerable<PostData> lsp = _context.postDatas.Where(obj => obj.uid == userId);
+                List<PostDataView> pdv=new List<PostDataView>();
+                foreach(PostData pd in lsp)
+                {
+                    PostDataView tmp = new PostDataView();
+                    tmp.uid = userId;
+                    tmp.title = pd.title;
+                    tmp.uploadtime = pd.uploadtime;
+                    tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                    pdv.Add(tmp);
+                }
+                userdata ud = new userdata();
+                ud.EshUsers = esu;
+                ud.pdvs = pdv;
+                return View("Userdata", ud);
+
+            }
+        }
+
+        public IActionResult Edit_Post(int id)
+        {
+            string userId = _userManager.GetUserName(User);
+            PostData pd = _context.postDatas.FirstOrDefault(obj=> obj.postid==id && obj.uid==userId);
+            if(pd==null)
+            {
+                ViewBag.error = "yes";
+            }
+            else
+            {
+                PostDataView pdv = new PostDataView();
+                pdv.Postid = id;
+                pdv.richtext= System.IO.File.ReadAllText(pd.richtext_file_path);
+                pdv.title = pd.title;
+                pdv.uid=pd.uid;
+                pdv.uploadtime = pd.uploadtime;
+                return View(pdv);
+            }
+            return View();
+        }
+
+        public IActionResult tmp()
+        {
+            return View();
+        }
+
+        public IActionResult Delete_Post(int id)
+        {
+            PostData pd = _context.postDatas.FirstOrDefault(obj => obj.postid == id);
+            if(pd.uid== _userManager.GetUserName(User))
+            {
+                _context.postDatas.Remove(pd);
+                _context.SaveChanges();
+            }
+            return Redirect("~/Home/My_Post");
+        }
+
+
+        public IActionResult Edit_Post_Save(int id,PostDataView pdv)
+        {
+            PostData pd = _context.postDatas.FirstOrDefault(obj => obj.postid==id);
+            if(pd!=null && pd.uid== _userManager.GetUserName(User))
+            {
+                System.IO.File.WriteAllText(pd.richtext_file_path, pdv.richtext);
+                pd.title = pdv.title;
+                pd.uploadtime = DateTime.Now;
+                _context.Update(pd);
+                _context.SaveChanges();
+               
+            }
+            return Redirect("~/Home/My_Post");
+        }
+
+        public IActionResult My_Post()
+        {
+            string userId = _userManager.GetUserName(User);
+            EshUser esu = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
+            
+                IEnumerable<PostData> lsp = _context.postDatas.Where(obj => obj.uid == userId);
+                List<PostDataView> pdv = new List<PostDataView>();
+                foreach (PostData pd in lsp)
+                {
+                    PostDataView tmp = new PostDataView();
+                    tmp.uid = userId;
+                    tmp.title = pd.title;
+                    tmp.uploadtime = pd.uploadtime;
+                    tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                tmp.Postid = pd.postid;
+                    pdv.Add(tmp);
+                }
+                return View(pdv);
+        }
+
+
 
         public IActionResult Update(EshUser eshUser)
         {
