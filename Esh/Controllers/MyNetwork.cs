@@ -34,8 +34,11 @@ namespace Esh.Controllers
             List<ReqUser> ruser = new List<ReqUser>();
             foreach(Friend frd in friends)
             {
-                EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid == frd.fid);
-                eshUsers.Add(eur);
+                if (frd.fid != userId)
+                {
+                    EshUser eur = _context.Eusers.FirstOrDefault(ob => ob.emailid == frd.fid);
+                    eshUsers.Add(eur);
+                }
             }
             foreach (Connection_Req conr in cr)
             {
@@ -46,6 +49,7 @@ namespace Esh.Controllers
                 tmp.school = eur.Schoolname;
                 tmp.designation = eur.designation;
                 tmp.uid = conr.requestuser;
+                tmp.frno = eur.frdno;
                 ruser.Add(tmp);
             }
             MNetwork mn = new MNetwork();
@@ -58,6 +62,13 @@ namespace Esh.Controllers
         public async Task<IActionResult> Accept(string fname)
         {
             Friend frd = new Friend();
+            EshUser e2 = _context.Eusers.FirstOrDefault(obj => obj.emailid == fname);
+            e2.frdno += 1;
+            _context.Update(e2);
+            EshUser e1 = _context.Eusers.FirstOrDefault(obj => obj.emailid == _userManager.GetUserName(User));
+            e1.frdno += 1;
+            _context.Update(e1);
+            await _context.SaveChangesAsync();
             frd.fid = fname;
             frd.uid= _userManager.GetUserName(User);
             Friend frd2 = new Friend();
@@ -70,6 +81,7 @@ namespace Esh.Controllers
             _context.Add(frd2);
             _context.SaveChanges();
             await  _context.SaveChangesAsync();
+            
             _logger.LogInformation("Accept Page Of MyNetwork Has Been Accessed");
             return Redirect("~/Home");
         }
@@ -82,22 +94,30 @@ namespace Esh.Controllers
             return Redirect("~/Home");
         }
 
-        public IActionResult Unfollow(string fname)
+        public async Task<IActionResult> Unfollow(string fname)
         {
             //Friend frd=_context.Friends.Where
             //Friend frd = _context.Friends.Where(obj => obj.uid == "as");
+            EshUser e2 = _context.Eusers.FirstOrDefault(obj => obj.emailid == fname);
+            e2.frdno -= 1;
+            _context.Update(e2);
+            EshUser e1 = _context.Eusers.FirstOrDefault(obj => obj.emailid == _userManager.GetUserName(User));
+            e1.frdno -= 1;
+            _context.Update(e1);
+            await _context.SaveChangesAsync();
             string uid = _userManager.GetUserName(User);
             Friend cnr = _context.Friends.FirstOrDefault(obj => (obj.uid==uid && obj.fid==fname) ||(obj.uid==fname && obj.fid==uid));
             if (cnr != null)
             {
                 _context.Remove(cnr);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 _logger.LogInformation(fname + " remove from " + _userManager.GetUserName(User) + "'s Friend");
             }
             else
             {
                 _logger.LogInformation("some error ocures while deleting friend");
             }
+            
             return Redirect("~/Home");
         }
     }
