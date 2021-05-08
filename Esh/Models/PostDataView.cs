@@ -10,6 +10,7 @@ namespace Esh.Models
         public string title { get; set; }
         public int Postid { get; set; }
         public string uid { get; set; }
+        public string uname { get; set; }
         public DateTime uploadtime { get; set; }
         public string richtext { get; set; }
     }

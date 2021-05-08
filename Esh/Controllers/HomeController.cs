@@ -82,9 +82,11 @@ namespace Esh.Controllers
                 if (st.Contains(pd.uid))
                 {
                     PostDataView tmp = new PostDataView();
+                    EshUser teu = _context.Eusers.FirstOrDefault(obj=>obj.emailid==pd.uid);
                     tmp.uid = userId;
                     tmp.title = pd.title;
                     tmp.uploadtime = pd.uploadtime;
+                    tmp.uname = teu.name;
                     tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
                     pv.Add(tmp);
                 }

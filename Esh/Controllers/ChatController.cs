@@ -135,6 +135,20 @@ namespace ChatApplication.Controllers
 
             homeChatViewModel.Users = lt;
 
+            //List<ChatApplicationUser> lt = new List<ChatApplicationUser>();
+            for (int i = 0; i < homeChatViewModel.Users.Count; i++)
+            {
+                foreach (Friend f in friends)
+                {
+                    if (f.fid == homeChatViewModel.Users[i].UserName)
+                    {
+                        lt.Add(homeChatViewModel.Users[i]);
+                    }
+                }
+            }
+
+            homeChatViewModel.Users = lt;
+
 
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
