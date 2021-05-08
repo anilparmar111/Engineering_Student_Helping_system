@@ -204,7 +204,7 @@ namespace Esh.Controllers
                 _context.SaveChanges();
                
             }
-            return Redirect("~/Home/My_Post");
+            return Redirect("~/Home/Account");
         }
 
         
