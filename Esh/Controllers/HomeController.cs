@@ -124,24 +124,35 @@ namespace Esh.Controllers
             }
             else
             {
-               IEnumerable<PostData> lsp = _context.postDatas.Where(obj => obj.uid == userId);
-                List<PostDataView> pdv=new List<PostDataView>();
-                foreach(PostData pd in lsp)
-                {
-                    PostDataView tmp = new PostDataView();
-                    tmp.uid = userId;
-                    tmp.title = pd.title;
-                    tmp.uploadtime = pd.uploadtime;
-                    tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
-                    pdv.Add(tmp);
-                }
+               
                 userdata ud = new userdata();
                 ud.EshUsers = esu;
-                ud.pdvs = pdv;
+                ud.pdvs = My_Post();
                 return View("Userdata", ud);
 
             }
         }
+
+        public List<PostDataView> My_Post()
+        {
+            string userId = _userManager.GetUserName(User);
+            EshUser esu = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
+
+            IEnumerable<PostData> lsp = _context.postDatas.Where(obj => obj.uid == userId);
+            List<PostDataView> pdv = new List<PostDataView>();
+            foreach (PostData pd in lsp)
+            {
+                PostDataView tmp = new PostDataView();
+                tmp.uid = userId;
+                tmp.title = pd.title;
+                tmp.uploadtime = pd.uploadtime;
+                tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
+                tmp.Postid = pd.postid;
+                pdv.Add(tmp);
+            }
+            return pdv;
+        }
+
 
         public IActionResult Edit_Post(int id)
         {
@@ -193,28 +204,10 @@ namespace Esh.Controllers
                 _context.SaveChanges();
                
             }
-            return Redirect("~/Home/My_Post");
+            return Redirect("~/Home/Account");
         }
 
-        public IActionResult My_Post()
-        {
-            string userId = _userManager.GetUserName(User);
-            EshUser esu = _context.Eusers.FirstOrDefault(obj => obj.emailid == userId);
-            
-                IEnumerable<PostData> lsp = _context.postDatas.Where(obj => obj.uid == userId);
-                List<PostDataView> pdv = new List<PostDataView>();
-                foreach (PostData pd in lsp)
-                {
-                    PostDataView tmp = new PostDataView();
-                    tmp.uid = userId;
-                    tmp.title = pd.title;
-                    tmp.uploadtime = pd.uploadtime;
-                    tmp.richtext = System.IO.File.ReadAllText(pd.richtext_file_path);
-                tmp.Postid = pd.postid;
-                    pdv.Add(tmp);
-                }
-                return View(pdv);
-        }
+        
 
 
 
@@ -229,6 +222,27 @@ namespace Esh.Controllers
             _logger.LogInformation("Update Page Of Home Has Been Accessed");
             return View("index");
         }
+
+
+        public IActionResult Update_MyData(userdata ud)
+        {
+            EshUser eshUser = ud.EshUsers;
+            string userId = _userManager.GetUserName(User);
+            EshUser eshUser1 = _context.Eusers.FirstOrDefault(obj=>obj.emailid==userId);
+            eshUser1.about = eshUser.about;
+            eshUser1.designation = eshUser.designation;
+            eshUser1.gender = eshUser.gender;
+            eshUser1.name = eshUser.name;
+            eshUser1.Persnal_Site_URL = eshUser.Persnal_Site_URL;
+            eshUser1.Schoolname = eshUser.Schoolname;
+            eshUser1.emailid = userId;
+            _context.Update(eshUser1);
+            _context.SaveChanges();
+            _logger.LogInformation("Update Page Of Home Has Been Accessed");
+            return View("index");
+        }
+
+
 
         public IActionResult Serch(string uname="")
         {

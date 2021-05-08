@@ -20,7 +20,7 @@ namespace Esh.Models
         public string about { get; set; }
         
         public bool gender { get; set; }
-
+        public int frdno { get; set; }
         public string Schoolname { get; set; }
         /*public string Start_Time;
         public bool Currently_Pursuing;

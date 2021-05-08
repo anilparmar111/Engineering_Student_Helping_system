@@ -11,6 +11,7 @@ namespace Esh.Models
         public string  name { get; set; }
         public string school { get; set; }
         public string designation { get; set; }
+        public int frno { get; set; }
         public DateTime reqtime { get; set; }
     }
 }
