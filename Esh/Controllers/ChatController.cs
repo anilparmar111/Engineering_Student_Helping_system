@@ -47,33 +47,22 @@ namespace ChatApplication.Controllers
             
             var loggedInUser = await userManager.GetUserAsync(User);
             List<Friend> friends = chatApplicationDBContext.Friends.Where(f => f.uid == loggedInUser.UserName).ToList<Friend>();
-            //_logger.LogInformation($"{friends.Count}");
             if (friends.Count == 0)
             {
                 homeChatViewModel.Users.Clear();
             }
 
-            //ChatApplicationUser cau = null;
             List<ChatApplicationUser> lt = new List<ChatApplicationUser>();
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
-                //_logger.LogInformation(homeChatViewModel.Users[i].UserName);
-                //if (homeChatViewModel.Users[i] == loggedInUser)
-                    //cau = homeChatViewModel.Users[i];
                 foreach (Friend f in friends)
                 {
-                    //_logger.LogInformation(f.fid);
                     if (f.fid == homeChatViewModel.Users[i].UserName)
                     {
                         lt.Add(homeChatViewModel.Users[i]);
                     }
                 }
             }
-            
-            /*foreach(ChatApplicationUser c in lt)
-            {
-                homeChatViewModel.Users.Remove(c);
-            }*/
 
             homeChatViewModel.Users = lt;
 
@@ -124,6 +113,28 @@ namespace ChatApplication.Controllers
                 ReceiverUser = null,
                 LastMessageBetweenTwoUser = new Dictionary<string, Message>()
             };
+
+            loggedInUser = await userManager.GetUserAsync(User);
+            List<Friend> friends = chatApplicationDBContext.Friends.Where(f => f.uid == loggedInUser.UserName).ToList<Friend>();
+            if (friends.Count == 0)
+            {
+                homeChatViewModel.Users.Clear();
+            }
+
+            List<ChatApplicationUser> lt = new List<ChatApplicationUser>();
+            for (int i = 0; i < homeChatViewModel.Users.Count; i++)
+            {
+                foreach (Friend f in friends)
+                {
+                    if (f.fid == homeChatViewModel.Users[i].UserName)
+                    {
+                        lt.Add(homeChatViewModel.Users[i]);
+                    }
+                }
+            }
+
+            homeChatViewModel.Users = lt;
+
 
             for (int i = 0; i < homeChatViewModel.Users.Count; i++)
             {
